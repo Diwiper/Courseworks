@@ -1,0 +1,642 @@
+¹1 | "data SEGMENT "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	DATA		4		identifier
+	2	SEGMENT		7		segment_start
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | 
+
+
+¹2 | "<empty line>"
+
+
+¹3 | "    Val1 db 101b"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VAL1		4		identifier
+	2	DB		2		var-size
+	3	101B		4		imm_bin
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹4 | "    Valb1 db 10"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALB1		5		identifier
+	2	DB		2		var-size
+	3	10		2		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹5 | "    Valb2 db 0Ah"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALB2		5		identifier
+	2	DB		2		var-size
+	3	0AH		3		imm_hex
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹6 | "    Valb3 db 12+12*(6-4)/2"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALB3		5		identifier
+	2	DB		2		var-size
+	3	12		2		imm_dec
+	4	+		1		symbol
+	5	12		2		imm_dec
+	6	*		1		symbol
+	7	(		1		symbol
+	8	6		1		imm_dec
+	9	-		1		symbol
+	10	4		1		imm_dec
+	11	)		1		symbol
+	12	/		1		symbol
+	13	2		1		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,11 | 
+
+
+¹7 | "<empty line>"
+
+
+¹8 | "    val2 dw 0111b"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VAL2		4		identifier
+	2	DW		2		var-size
+	3	0111B		5		imm_bin
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹9 | "    valw1 dw -16"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALW1		5		identifier
+	2	DW		2		var-size
+	3	-		1		symbol
+	4	16		2		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,2 | 
+
+
+¹10 | "    valw2 dw 45d"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALW2		5		identifier
+	2	DW		2		var-size
+	3	45D		3		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹11 | "    ABCDE dw 32h "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	ABCDE		5		identifier
+	2	DW		2		var-size
+	3	32H		3		imm_hex
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹12 | "<empty line>"
+
+
+¹13 | "<empty line>"
+
+
+¹14 | "    val3 dd 12345678h"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VAL3		4		identifier
+	2	DD		2		var-size
+	3	12345678H		9		imm_hex
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹15 | "    vald1 dd 1101b"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALD1		5		identifier
+	2	DD		2		var-size
+	3	1101B		5		imm_bin
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹16 | "    vald2 dd 45d"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALD2		5		identifier
+	2	DD		2		var-size
+	3	45D		3		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹17 | "    vald3 dd 12+6*(6-4)/4"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	VALD3		5		identifier
+	2	DD		2		var-size
+	3	12		2		imm_dec
+	4	+		1		symbol
+	5	6		1		imm_dec
+	6	*		1		symbol
+	7	(		1		symbol
+	8	6		1		imm_dec
+	9	-		1		symbol
+	10	4		1		imm_dec
+	11	)		1		symbol
+	12	/		1		symbol
+	13	4		1		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,11 | 
+
+
+¹18 | "<empty line>"
+
+
+¹19 | "    x db -128"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	X		1		identifier
+	2	DB		2		var-size
+	3	-		1		symbol
+	4	128		3		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,2 | 
+
+
+¹20 | "    y dw 2*5*5/5-4+10"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	Y		1		identifier
+	2	DW		2		var-size
+	3	2		1		imm_dec
+	4	*		1		symbol
+	5	5		1		imm_dec
+	6	*		1		symbol
+	7	5		1		imm_dec
+	8	/		1		symbol
+	9	5		1		imm_dec
+	10	-		1		symbol
+	11	4		1		imm_dec
+	12	+		1		symbol
+	13	10		2		imm_dec
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,11 | 
+
+
+¹21 | "    z dd 0FFFFFFFFh"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	Z		1		identifier
+	2	DD		2		var-size
+	3	0FFFFFFFFH		10		imm_hex
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹22 | "    data ends"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	DATA		4		identifier
+	2	ENDS		4		segment_ends
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | 
+
+
+¹23 | "<empty line>"
+
+
+¹24 | "code SEGMENT "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CODE		4		identifier
+	2	SEGMENT		7		segment_start
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | 
+
+
+¹25 | " cli"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CLI		3		instruction
+SENTENCE STRUCT:
+mnem: 1,1 | 
+
+
+¹26 | "  jmp l1"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	JMP		3		instruction
+	2	L1		2		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹27 | " jmp L2"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	JMP		3		instruction
+	2	L2		2		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹28 | "    CodeV dw 0ABh"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CODEV		5		identifier
+	2	DW		2		var-size
+	3	0ABH		4		imm_hex
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | op: 3,1 | 
+
+
+¹29 | "<empty line>"
+
+
+¹30 | "    push CodeV      "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	CODEV		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹31 | "    push cs:CodeV   "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	CS		2		seg_reg
+	3	:		1		symbol
+	4	CODEV		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹32 | "    push ds:CodeV "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	DS		2		seg_reg
+	3	:		1		symbol
+	4	CODEV		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹33 | "<empty line>"
+
+
+¹34 | "    push val2 "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	VAL2		4		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹35 | "    push es:val3 "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	ES		2		seg_reg
+	3	:		1		symbol
+	4	VAL3		4		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹36 | "    push ds:vald3"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	DS		2		seg_reg
+	3	:		1		symbol
+	4	VALD3		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹37 | "<empty line>"
+
+
+¹38 | "        push CodeV      "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	CODEV		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹39 | "    push cs:CodeV   "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	CS		2		seg_reg
+	3	:		1		symbol
+	4	CODEV		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹40 | "    push ds:CodeV "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	DS		2		seg_reg
+	3	:		1		symbol
+	4	CODEV		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹41 | "<empty line>"
+
+
+¹42 | "    push val2 "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	VAL2		4		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹43 | "    push es:val3 "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	ES		2		seg_reg
+	3	:		1		symbol
+	4	VAL3		4		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹44 | "    push ds:vald3"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	PUSH		4		instruction
+	2	DS		2		seg_reg
+	3	:		1		symbol
+	4	VALD3		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,3 | 
+
+
+¹45 | "<empty line>"
+
+
+¹46 | "    bt edi, ebx     "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	BT		2		instruction
+	2	EDI		3		reg32
+	3	,		1		symbol
+	4	EBX		3		reg32
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹47 | "    bt di, ax "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	BT		2		instruction
+	2	DI		2		reg16
+	3	,		1		symbol
+	4	AX		2		reg16
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹48 | "<empty line>"
+
+
+¹49 | "    lea dx, CodeV[di] "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	LEA		3		instruction
+	2	DX		2		reg16
+	3	,		1		symbol
+	4	CODEV		5		identifier
+	5	[		1		symbol
+	6	DI		2		reg16
+	7	]		1		symbol
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,4 | 
+
+
+¹50 | "    lea bx, vald1 "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	LEA		3		instruction
+	2	BX		2		reg16
+	3	,		1		symbol
+	4	VALD1		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹51 | "    lea eax, val3[ebp] "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	LEA		3		instruction
+	2	EAX		3		reg32
+	3	,		1		symbol
+	4	VAL3		4		identifier
+	5	[		1		symbol
+	6	EBP		3		reg32
+	7	]		1		symbol
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,4 | 
+
+
+¹52 | "<empty line>"
+
+
+¹53 | "    out 10h, al"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	OUT		3		instruction
+	2	10H		3		imm_hex
+	3	,		1		symbol
+	4	AL		2		reg8
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹54 | "    out 20h, ax"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	OUT		3		instruction
+	2	20H		3		imm_hex
+	3	,		1		symbol
+	4	AX		2		reg16
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹55 | "    out 001b, eax"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	OUT		3		instruction
+	2	001B		4		imm_bin
+	3	,		1		symbol
+	4	EAX		3		reg32
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹56 | "<empty line>"
+
+
+¹57 | "    cmp vald1, 0DEADh     "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CMP		3		instruction
+	2	VALD1		5		identifier
+	3	,		1		symbol
+	4	0DEADH		6		imm_hex
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹58 | "    cmp val3, 0101b"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CMP		3		instruction
+	2	VAL3		4		identifier
+	3	,		1		symbol
+	4	0101B		5		imm_bin
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹59 | "    cmp vald3,12+6*(6-4)/4"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CMP		3		instruction
+	2	VALD3		5		identifier
+	3	,		1		symbol
+	4	12		2		imm_dec
+	5	+		1		symbol
+	6	6		1		imm_dec
+	7	*		1		symbol
+	8	(		1		symbol
+	9	6		1		imm_dec
+	10	-		1		symbol
+	11	4		1		imm_dec
+	12	)		1		symbol
+	13	/		1		symbol
+	14	4		1		imm_dec
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,11 | 
+
+
+¹60 | "    cmp ABCDE, 32h"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CMP		3		instruction
+	2	ABCDE		5		identifier
+	3	,		1		symbol
+	4	32H		3		imm_hex
+SENTENCE STRUCT:
+mnem: 1,1 | op1: 2,1 | op2: 4,1 | 
+
+
+¹61 | "<empty line>"
+
+
+¹62 | "    jnz mark2"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	JNZ		3		instruction
+	2	MARK2		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹63 | "    mark2: "
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	MARK2		5		identifier
+	2	:		1		symbol
+SENTENCE STRUCT:
+label: 1,1 | 
+
+
+¹64 | "    jnz mark2"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	JNZ		3		instruction
+	2	MARK2		5		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹65 | "<empty line>"
+
+
+¹66 | "    L1:"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	L1		2		identifier
+	2	:		1		symbol
+SENTENCE STRUCT:
+label: 1,1 | 
+
+
+¹67 | "    jmp l1"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	JMP		3		instruction
+	2	L1		2		identifier
+SENTENCE STRUCT:
+mnem: 1,1 | op: 2,1 | 
+
+
+¹68 | "    L2:"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	L2		2		identifier
+	2	:		1		symbol
+SENTENCE STRUCT:
+label: 1,1 | 
+
+
+¹69 | "code ends"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	CODE		4		identifier
+	2	ENDS		4		segment_ends
+SENTENCE STRUCT:
+label: 1,1 | mnem: 2,1 | 
+
+
+¹70 | "END"
+Lexeme table:
+	Index	Lexeme		Length		Type
+	1	END		3		program_end
+SENTENCE STRUCT:
+mnem: 1,1 | 
+
+
+¹71 | "<empty line>"
+
+
+¹72 | "<empty line>"
+
+

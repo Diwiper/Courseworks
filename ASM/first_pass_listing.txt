@@ -1,0 +1,104 @@
+Denys Lashkov KV-33
+Listing | First view 
+   1            DATA SEGMENT 
+2                
+3     0000        VAL1 DB 101B
+4     0001        VALB1 DB 10
+5     0002        VALB2 DB 0AH
+6     0003        VALB3 DB 12+12*(6-4)/2
+7                
+8     0004        VAL2 DW 0111B
+9     0006        VALW1 DW -16
+10    0008        VALW2 DW 45D
+11    000a        ABCDE DW 32H 
+12               
+13               
+14    000c        VAL3 DD 12345678H
+15    0010        VALD1 DD 1101B
+16    0014        VALD2 DD 45D
+17    0018        VALD3 DD 12+6*(6-4)/4
+18               
+19    001c        X DB -128
+20    001d        Y DW 2*5*5/5-4+10
+21    001f        Z DD 0FFFFFFFFH
+22                  DATA ENDS
+23               
+24              CODE SEGMENT 
+25    0000     CLI
+26    0001      JMP L1
+27    0004     JMP L2
+28    0007        CODEV DW 0ABH
+29               
+30    0009        PUSH CODEV      
+31    000e        PUSH CS:CODEV   
+32    0013        PUSH DS:CODEV 
+33               
+34    0017        PUSH VAL2 
+35    001b        PUSH ES:VAL3 
+36    0021        PUSH DS:VALD3
+37               
+38    0026            PUSH CODEV      
+39    002b        PUSH CS:CODEV   
+40    0030        PUSH DS:CODEV 
+41               
+42    0034        PUSH VAL2 
+43    0038        PUSH ES:VAL3 
+44    003e        PUSH DS:VALD3
+45               
+46    0043        BT EDI, EBX     
+47    0047        BT DI, AX 
+48               
+49    004a        LEA DX, CODEV[DI] 
+50    004e        LEA BX, VALD1 
+51    0051        LEA EAX, VAL3[EBP] 
+52               
+53    0059        OUT 10H, AL
+54    005b        OUT 20H, AX
+55    005d        OUT 001B, EAX
+56               
+57    0060        CMP VALD1, 0DEADH     
+58    0069        CMP VAL3, 0101B
+59    006f        CMP VALD3,12+6*(6-4)/4
+60    0075        CMP ABCDE, 32H
+61               
+62    007a        JNZ MARK2
+63    007e        MARK2: 
+64    007e        JNZ MARK2
+65               
+66    0080        L1:
+67    0080        JMP L1
+68    0082        L2:
+69              CODE ENDS
+70    0082    END
+71               
+72               
+
+Variables list:
+Name:	CODEV	Segment:CODE	Offset:  0007
+Name:	VAL1	Segment:DATA	Offset:  0000
+Name:	VALB1	Segment:DATA	Offset:  0001
+Name:	VALB2	Segment:DATA	Offset:  0002
+Name:	VALB3	Segment:DATA	Offset:  0003
+Name:	VAL2	Segment:DATA	Offset:  0004
+Name:	VALW1	Segment:DATA	Offset:  0006
+Name:	VALW2	Segment:DATA	Offset:  0008
+Name:	ABCDE	Segment:DATA	Offset:  000a
+Name:	VAL3	Segment:DATA	Offset:  000c
+Name:	VALD1	Segment:DATA	Offset:  0010
+Name:	VALD2	Segment:DATA	Offset:  0014
+Name:	VALD3	Segment:DATA	Offset:  0018
+Name:	X	Segment:DATA	Offset:  001c
+Name:	Y	Segment:DATA	Offset:  001d
+Name:	Z	Segment:DATA	Offset:  001f
+
+Labels:
+Name:	MARK2	Segment:CODE	Offset:  007e
+Name:	L1	Segment:CODE	Offset:  0080
+Name:	L2	Segment:CODE	Offset:  0082
+
+Errors list:
+26 Warning: JMP target label 'L1' not defined in the current pass
+27 Warning: JMP target label 'L2' not defined in the current pass
+62 Warning: JNZ target label 'MARK2' not defined in the current pass
+
+Total errors: 3

@@ -1,0 +1,125 @@
+Turbo Assembler	 Version 2.5	    06/09/25 19:21:12	    Page 1
+test2.ASM
+
+
+
+      1					 .486
+      2	    0000			 data segment use16
+      3
+      4	    0000  05			     Val1 db 101b
+      5	    0001  0A			     Valb1 db 10
+      6	    0002  0A			     Valb2 db 0Ah
+      7	    0003  18			     Valb3 db 12+12*(6-4)/2
+      8
+      9	    0004  0007			     val2 dw 0111b
+     10	    0006  FFF0			     valw1 dw -16
+     11	    0008  002D			     valw2 dw 45d
+     12	    000A  0032			     ABCDE dw 32h
+     13
+     14
+     15	    000C  12345678		     val3 dd 12345678h
+     16	    0010  0000000D		     vald1 dd 1101b
+     17	    0014  0000002D		     vald2 dd 45d
+     18	    0018  0000000F		     vald3 dd 12+6*(6-4)/4
+     19
+     20	    001C  80			     x db -128
+     21	    001D  0010			     y dw 2*5*5/5-4+10
+     22	    001F  FFFFFFFF		     z dd 0FFFFFFFFh
+     23
+     24	    0023			     data ends
+     25	    0000			 code segment use16
+     26					 assume	ds:data, cs:code
+     27	    0000  FA			  cli
+     28	    0001  EB 7D	90		   jmp l1
+     29	    0004  EB 7C	90		  jmp L2
+     30	    0007  00AB			     CodeV dw 0ABh
+     31
+     32	    0009  2E: FF 36 0007r	     push CodeV
+     33	    000E  2E: FF 36 0007r	     push cs:CodeV
+     34	    0013  FF 36	0007r		     push ds:CodeV
+     35
+     36	    0017  FF 36	0004r		     push val2
+     37	    001B  66| 26: FF 36	000Cr	     push es:val3
+     38	    0021  66| FF 36 0018r	     push ds:vald3
+     39
+     40	    0026  2E: FF 36 0007r		 push CodeV
+     41	    002B  2E: FF 36 0007r	     push cs:CodeV
+     42	    0030  FF 36	0007r		     push ds:CodeV
+     43
+     44	    0034  FF 36	0004r		     push val2
+     45	    0038  66| 26: FF 36	000Cr	     push es:val3
+     46	    003E  66| FF 36 0018r	     push ds:vald3
+     47
+     48	    0043  66| 0F A3 DF		     bt	edi, ebx
+     49	    0047  0F A3	C7		     bt	di, ax
+     50
+     51	    004A  8D 95	0007r		     lea dx, CodeV[di]
+     52	    004E  BB 0010r		     lea bx, vald1
+     53	    0051  66| 67| 8D 85	      +	     lea eax, val3[ebp]
+     54		  0000000Cr
+     55
+     56	    0059  E6 10			     out 10h, al
+     57	    005B  E7 20			     out 20h, ax
+Turbo Assembler	 Version 2.5	    06/09/25 19:21:12	    Page 2
+test2.ASM
+
+
+
+     58	    005D  66| E7 01		     out 001b, eax
+     59
+     60	    0060  66| 81 3E 0010r     +	     cmp vald1,	0DEADh
+     61		  0000DEAD
+     62	    0069  66| 83 3E 000Cr 05	     cmp val3, 0101b
+     63	    006F  66| 83 3E 0018r 0F	     cmp vald3,12+6*(6-4)/4
+     64	    0075  83 3E	000Ar 32	     cmp ABCDE,	32h
+     65
+     66	    007A  75 02	90 90		     jnz mark2
+     67	    007E			     mark2:
+     68	    007E  75 FE			     jnz mark2
+     69
+     70	    0080			     L1:
+     71	    0080  EB FE			     jmp l1
+     72	    0082			     L2:
+     73	    0082			 code ends
+     74					 END
+Turbo Assembler	 Version 2.5	    06/09/25 19:21:12	    Page 3
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "06/09/25"
+??FILENAME			  Text	 "test2	  "
+??TIME				  Text	 "19:21:12"
+??VERSION			  Number 0205
+@CPU				  Text	 0D1FH
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 TEST2
+@WORDSIZE			  Text	 2
+ABCDE				  Word	 DATA:000A
+CODEV				  Word	 CODE:0007
+L1				  Near	 CODE:0080
+L2				  Near	 CODE:0082
+MARK2				  Near	 CODE:007E
+VAL1				  Byte	 DATA:0000
+VAL2				  Word	 DATA:0004
+VAL3				  Dword	 DATA:000C
+VALB1				  Byte	 DATA:0001
+VALB2				  Byte	 DATA:0002
+VALB3				  Byte	 DATA:0003
+VALD1				  Dword	 DATA:0010
+VALD2				  Dword	 DATA:0014
+VALD3				  Dword	 DATA:0018
+VALW1				  Word	 DATA:0006
+VALW2				  Word	 DATA:0008
+X				  Byte	 DATA:001C
+Y				  Word	 DATA:001D
+Z				  Dword	 DATA:001F
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  0082 Para	  none
+DATA				  16  0023 Para	  none
+
