@@ -15,6 +15,7 @@ Compare the performance of classical sorting algorithms based on experiments.
 - Measurement of execution time for each algorithm
 - Construction of comparison graphs or tables
 
+
 ## Conclusion
 As a result of the study, algorithms that work best on different data volumes were identified.
 
